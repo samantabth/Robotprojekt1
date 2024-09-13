@@ -24,4 +24,23 @@ Important! The code may not function correctly if the first line from the templa
 """
 
 # Your code goes here
-...
+
+ev3.speaker.beep()
+# robot.drive(200, 0)
+
+
+# Go forward and backwards for one meter.
+while True:
+    ev3.speaker.play_notes(['C4/4', 'C4/4', 'G4/4', 'F4/4'], tempo=120)
+    robot.straight(300)
+    robot.turn(360)
+
+
+
+
+
+
+
+
+
+

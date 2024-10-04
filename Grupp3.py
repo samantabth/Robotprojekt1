@@ -27,10 +27,13 @@ Important! The code may not function correctly if the first line from the templa
 # ytterkurva.
 
 #Konstanter som definierar hastighet, hur responsiv roboten är samt vad som anses "vitt" och "svart".
-BASE_SPEED = 150  
+BASE_SPEED = 100  
 WHITE_THRESHOLD = 80  
 BLACK_THRESHOLD = 20  
-KP = 2.0  
+KP = 2.0 #better kp name
+#right motor
+#left motor value
+#look around the wait values
 
 # Huvudfunktionen som följer linjen, högre värde av vitt medför snabbare korrigering mot linje.
 def follow_line():
@@ -58,8 +61,8 @@ def follow_line():
 def search_for_line():
     ev3.speaker.beep()  
     
-    left_motor.run_angle(100, 20)   
-    right_motor.run_angle(-100, -20) 
+    left_motor.run_angle(75, 20)   
+    right_motor.run_angle(-75, -20) 
     wait(200)
     
     for i  in range(40):
@@ -68,8 +71,8 @@ def search_for_line():
             if color_sensor.reflection() < WHITE_THRESHOLD:
                 return  
 
-            right_motor.run_angle(150, 35)  
-            left_motor.run_angle(100, -35)
+            right_motor.run_angle(100, 20)  
+            left_motor.run_angle(75, -20)
             wait(200)
 
             if color_sensor.reflection() < WHITE_THRESHOLD:
@@ -81,14 +84,16 @@ def search_for_line():
             if color_sensor.reflection() < WHITE_THRESHOLD:
                 return  
 
-            left_motor.run_angle(150, 35)  
-            right_motor.run_angle(100, -35)
+            left_motor.run_angle(100, 20)  
+            right_motor.run_angle(75, -20)
             
             wait(200)
             
             if color_sensor.reflection() < WHITE_THRESHOLD:
-                        return  
+                return  
             ev3.speaker.beep()
 
 
 follow_line()
+
+
